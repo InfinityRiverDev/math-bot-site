@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Tutor | KNRTU</title>
+    <link rel="icon" type="image/png" href="111.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --accent: #22d3ee;
+            --bg: #0f172a;
+            --text: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { user-select: none; margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; min-height: 100vh; }
+
+        /* Фон с летающими шарами */
+        .background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; filter: blur(100px); }
+        .sphere { position: absolute; border-radius: 50%; opacity: 0.4; transition: transform 0.2s ease-out; }
+        .sphere-1 { width: 500px; height: 500px; background: var(--primary); top: -100px; left: -100px; }
+        .sphere-2 { width: 600px; height: 600px; background: var(--accent); bottom: -150px; right: -100px; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        /* 1. Главный экран: Картинка и Текст */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+            min-height: 85vh;
+            padding: 4rem 0;
+        }
+
+        .mascot-box img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 30px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            border: 1px solid var(--border);
+        }
+
+        .hero-content { text-align: left; }
+        .badge { display: inline-block; padding: 6px 16px; background: var(--glass); border: 1px solid var(--border); border-radius: 100px; font-size: 0.85rem; margin-bottom: 1.5rem; color: var(--accent); font-weight: 600; }
+        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero-p { font-size: 1.15rem; color: #94a3b8; margin-bottom: 2.5rem; line-height: 1.6; }
+        
+        .cta {
+            display: inline-block;
+            background: #fff; color: #0f172a; padding: 18px 36px; border-radius: 14px;
+            text-decoration: none; font-weight: 700; transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .cta:hover { transform: translateY(-3px); background: var(--accent); color: #fff; }
+
+        /* 2. Три блока преимуществ */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            border-radius: 24px;
+            backdrop-filter: blur(15px);
+            transition: 0.3s;
+        }
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #fff; }
+        .card p { color: #94a3b8; line-height: 1.6; }
+        .icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+
+        /* 3. Сплошной текст-описание */
+        .description-text {
+            max-width: 800px;
+            margin: 6rem auto;
+            text-align: center;
+        }
+        .description-text h2 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+        .description-text p { font-size: 1.2rem; color: #94a3b8; line-height: 1.8; }
+
+        /* 4. Длинный блок с выглядывающими картинками */
+        .wide-card {
+            background: linear-gradient(90deg, var(--glass), rgba(99, 102, 241, 0.05));
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 4rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            min-height: 450px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 6rem;
+        }
+
+        .wide-card-text { max-width: 55%; z-index: 2; }
+        .wide-card h2 { font-size: 2.8rem; margin-bottom: 1.5rem; }
+        .wide-card p { color: #94a3b8; font-size: 1.1rem; line-height: 1.6; }
+
+        .floating-imgs {
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1;
+        }
+
+        .f-img {
+            width: 200px;
+            height: 300px;
+            background: #1e293b;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            transform: rotate(-12deg) translateY(20px);
+            box-shadow: -15px 15px 40px rgba(0,0,0,0.6);
+            transition: 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+            object-fit: cover;
+        }
+
+        .f-img:nth-child(2) { transform: rotate(-12deg) translateY(-30px); }
+        .f-img:nth-child(3) { transform: rotate(-12deg) translateY(50px); }
+        
+        .wide-card:hover .f-img {
+            transform: rotate(-3deg) translateY(0);
+        }
+
+        footer { text-align: center; padding: 4rem 0; color: #475569; border-top: 1px solid var(--border); }
+
+        /* Мобильная адаптация */
+        @media (max-width: 968px) {
+            .hero { grid-template-columns: 1fr; text-align: center; padding: 2rem 0; }
+            .hero-content { order: 1; }
+            .mascot-box { order: 2; margin: 0 auto; }
+            .wide-card { flex-direction: column; text-align: center; padding: 3rem 1.5rem; }
+            .wide-card-text { max-width: 100%; margin-bottom: 4rem; }
+            .floating-imgs { position: relative; right: 0; transform: none; padding-top: 1rem; justify-content: center; }
+            .f-img { width: 140px; height: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background">
+        <div class="sphere sphere-1"></div>
+        <div class="sphere sphere-2"></div>
+    </div>
+
+    <main class="container">
+        <section class="hero">
+            <div class="mascot-box">
+                <img src="avatar.jpg" alt="Math Tutor KNRTU">
+            </div>
+            <div class="hero-content">
+                <div class="badge">Специально для КНИТУ 🎓</div>
+                <h1>Math Tutor<br>уже в деле 🚀</h1>
+                <p class="hero-p">Кидай задачу — забирай ответ. Твой личный ИИ-наставник по высшей математике, готовый прийти на помощь 24/7.</p>
+                <a href="https://t.me/MathTutor_KNRTU_bot" class="cta">Начать решать прямо сейчас 👇</a>
+            </div>
+        </section>
+
+        <section class="features-grid">
+            <div class="card">
+                <span class="icon">⚡️</span>
+                <h3>Мгновенно</h3>
+                <p>Решение сложных примеров и задач в режиме реального времени. Скорость, которая спасает на зачетах.</p>
+            </div>
+            <div class="card">
+                <span class="icon">🧠</span>
+                <h3>Подробно</h3>
+                <p>ИИ не просто выдает результат, а пошагово объясняет каждую формулу и переход в решении.</p>
+            </div>
+            <div class="card">
+                <span class="icon">📚</span>
+                <h3>Всё в одном</h3>
+                <p>База лекций, индивидуальная статистика и помощь в выполнении работ под заказ — всё в твоем ТГ.</p>
+            </div>
+        </section>
+
+        <section class="description-text">
+            <h2>Твой умный помощник</h2>
+            <p>
+                Мы разработали этот бот, чтобы студенты КНИТУ могли тратить меньше времени на рутину и больше — на реальные знания. 
+                Math Tutor адаптирован под вузовскую программу: от простых пределов до сложной линейной алгебры. 
+                Внутри ты найдешь не только калькулятор, но и полноценную поддержку ИИ, которая поможет подготовиться к любой контрольной.
+            </p>
+        </section>
+
+        <section class="showcase-section">
+            <div class="wide-card">
+                <div class="wide-card-text">
+                    <h2>Стань самым активным</h2>
+                    <p>Следи за своей статистикой в личном кабинете бота. Самые активные пользователи, решающие задачи через наш сервис, получают ценные призы и бонусы от команды Math Tutor.</p>
+                </div>
+                <div class="floating-imgs">
+                    <img src="1.png" class="f-img" alt="">
+                    <img src="2.png" class="f-img" alt="">
+                    <img src="3.png" class="f-img" alt="">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            © 2026 Math Tutor AI | Создано для студентов КНИТУ
+        </div>
+    </footer>
+
+    <script>
+        // Анимация шаров при движении мыши
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX - window.innerWidth/2) * 0.02;
+            const y = (e.clientY - window.innerHeight/2) * 0.02;
+            document.querySelector('.sphere-1').style.transform = `translate(${x}px, ${y}px)`;
+            document.querySelector('.sphere-2').style.transform = `translate(${-x}px, ${-y}px)`;
+        });
+    </script>
+</body>
+</html>
