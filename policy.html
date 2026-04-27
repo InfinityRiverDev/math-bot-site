@@ -1,115 +1,501 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Политика конфиденциальности</title>
-
   <style>
-/* normalize.css */
-*,
-::before,
-::after { box-sizing: border-box; }
-:where(ul, ol):where([class]) { padding-left: 0; }
-body,
-:where(blockquote, figure, fieldset):where([class]) { margin: 0; }
-:where(h1,h2,h3,h4,h5,h6,p,ul,ol,dl):where([class]) { margin-block: 0; }
-:where(dd[class]) { margin-left: 0; }
-:where(fieldset[class]) { padding: 0; border: none; }
-:where(ul[class]) { list-style: none; }
-:where(address[class]) { font-style: normal; }
-p { --paragraphMarginBottom: 24px; margin-block: 0; }
-p:where(:not([class]):not(:last-child)) { margin-bottom: var(--paragraphMarginBottom); }
-img, video { display: block; max-width: 100%; height: auto; }
-input, textarea, select, button { font: inherit; }
-html { height: 100%; scrollbar-gutter: stable; scroll-behavior: smooth; }
-body { min-height: 100%; line-height: 1.5; }
-a:where([class]) { display: inline-flex; }
-button, label { cursor: pointer; }
-button { -webkit-tap-highlight-color: transparent; }
-:where(table) { border-collapse: collapse; border-color: currentColor; }
+    /* ── normalize.css ── */
+    *,
+    ::before,
+    ::after {
+      box-sizing: border-box;
+    }
 
-/* styles.css */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-:root {
-  --color-wight: #d6d6d6;
-  --color-gray: #161616;
-  --glass: rgba(255,255,255,0.03);
-  --border: rgba(255,255,255,0.1);
-  --accent: #22d3ee;
-  --primary: #6366f1;
-  --color-blue: #0f172a;
-  --color-light-blue: #94a3b8;
-  --color-purpule: #5982b7;
-  --container-width: 1500px;
-  --container-pagging-x: 15px;
-  --border-radius: 24px;
-}
-body {
-  position: relative;
-  font-family: "Inter", sans-serif;
-  color: var(--color-wight);
-  background-color: var(--color-blue);
-  padding-inline: 10px;
-}
-.container {
-  width: 100%;
-  max-width: calc(var(--container-width) + var(--container-pagging-x) * 2);
-  padding: 40px;
-  margin: auto;
-}
-a { text-decoration: underline; color: var(--color-purpule); }
-.title-small { font-size: clamp(20px, 5vw, 35px); color: var(--color-light-blue); }
-.circle-1, .circle-2 {
-  position: fixed;
-  z-index: -2;
-  width: 600px;
-  aspect-ratio: 1;
-  filter: blur(300px);
-}
-.circle-1 { top: -20%; left: -20%; background: var(--accent); }
-.circle-2 { bottom: -20%; right: -20%; background: var(--primary); }
-.privacy-policy__content { display: flex; flex-direction: column; row-gap: 40px; }
-.privacy-policy__header-title {
-  font-size: clamp(30px, 6vw, 50px);
-  line-height: 1.2;
-  text-align: center;
-  margin-block: 20px 40px;
-}
-.privacy-policy__date { text-align: center; margin-bottom: 60px; }
-.privacy-policy__section {
-  color: var(--color-light-blue);
-  border: 1px solid var(--border);
-  padding: 2.5rem;
-  backdrop-filter: blur(15px);
-  border-radius: var(--border-radius);
-  background-color: var(--glass);
-}
-.privacy-policy__section-title { font-weight: 500; margin-bottom: 30px; }
-.title-small { display: inline-block; }
+    :where(ul, ol):where([class]) {
+      padding-left: 0;
+    }
+
+    body,
+    :where(blockquote, figure, fieldset):where([class]) {
+      margin: 0;
+    }
+
+    :where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+      margin-block: 0;
+    }
+
+    :where(dd[class]) {
+      margin-left: 0;
+    }
+
+    :where(fieldset[class]) {
+      padding: 0;
+      border: none;
+    }
+
+    :where(ul[class]) {
+      list-style: none;
+    }
+
+    :where(address[class]) {
+      font-style: normal;
+    }
+
+    p {
+      --paragraphMarginBottom: 24px;
+      margin-block: 0;
+    }
+
+    p:where(:not([class]):not(:last-child)) {
+      margin-bottom: var(--paragraphMarginBottom);
+    }
+
+    img,
+    video {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    input,
+    textarea,
+    select,
+    button {
+      font: inherit;
+    }
+
+    html {
+      height: 100%;
+      scrollbar-gutter: stable;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100%;
+      line-height: 1.5;
+    }
+
+    a:where([class]) {
+      display: inline-flex;
+    }
+
+    button,
+    label {
+      cursor: pointer;
+    }
+
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :where([fill]:not([fill="none"], [fill^="url"])) {
+      fill: currentColor;
+    }
+
+    :where([stroke]:not([stroke="none"], [stroke^="url"])) {
+      stroke: currentColor;
+    }
+
+    svg * {
+      transition-property: fill, stroke;
+    }
+
+    :where(table) {
+      border-collapse: collapse;
+      border-color: currentColor;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      ::before,
+      ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ── styles.css ── */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+    :root {
+      --color-wight: #d6d6d6;
+      --color-gray: #161616;
+
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.1);
+
+      --accent: #22d3ee;
+      --primary: #6366f1;
+      --color-blue: #0f172a;
+      --color-light-blue: #94a3b8;
+      --color-purpule: #5982b7;
+
+      --container-width: 1500px;
+      --container-pagging-x: 15px;
+
+      --border-radius: 24px;
+    }
+
+    body {
+      position: relative;
+      font-family: "Inter", sans-serif;
+      color: var(--color-wight);
+      background-color: var(--color-blue);
+      padding-inline: 10px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: calc(var(--container-width) + var(--container-pagging-x) * 2);
+      padding: 40px;
+      margin: auto;
+    }
+
+    a {
+      text-decoration: underline;
+      color: var(--color-purpule);
+    }
+
+    .title-small {
+      font-size: clamp(20px, 5vw, 35px);
+      color: var(--color-light-blue);
+    }
+
+    .circle-1 {
+      position: fixed;
+      top: -20%;
+      left: -20%;
+      z-index: -2;
+      width: 600px;
+      aspect-ratio: 1;
+      filter: blur(300px);
+      background-color: var(--accent);
+    }
+
+    .circle-2 {
+      position: fixed;
+      bottom: -20%;
+      right: -20%;
+      z-index: -2;
+      width: 600px;
+      aspect-ratio: 1;
+      filter: blur(300px);
+      background-color: var(--primary);
+    }
+
+    .privacy-policy__content {
+      display: flex;
+      flex-direction: column;
+      row-gap: 40px;
+    }
+
+    .privacy-policy__header-title {
+      font-size: clamp(30px, 38.4vw, 50px);
+      line-height: 1.2;
+      text-align: center;
+      margin-block: 20px 40px;
+    }
+
+    .privacy-policy__date {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .privacy-policy__section {
+      color: var(--color-light-blue);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      backdrop-filter: blur(15px);
+      border-radius: var(--border-radius);
+      background-color: var(--glass);
+    }
+
+    .privacy-policy__section-title {
+      font-weight: 500;
+      margin-bottom: 30px;
+    }
+
+    .privacy-policy__text {
+      margin-bottom: 15px;
+    }
+
+    .privacy-policy__list {
+      display: flex;
+      flex-direction: column;
+      row-gap: 30px;
+      margin-left: 32px;
+
+      counter-reset: item;
+      list-style: none;
+    }
+
+    .privacy-policy__item {
+      font-size: 20px;
+    }
+
+    .privacy-policy__item:before {
+      counter-increment: item;
+      content: '1.' counter(item) '. ';
+      letter-spacing: 2px;
+    }
+
+    .privacy-policy__item .privacy-policy__item-subtitle {
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .privacy-policy__sublist {
+      display: flex;
+      flex-direction: column;
+      row-gap: 15px;
+      margin-left: 25px;
+    }
+
+    .privacy-policy__sublist-item {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+    }
+
+    .privacy-policy__sublist-item::before {
+      display: inline-flex;
+      content: '';
+      width: 8px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background-color: var(--color-light-blue);
+    }
   </style>
 </head>
 <body>
-  <div class="circle-1"></div>
-  <div class="circle-2"></div>
+<div class="circle-1"></div>
+<div class="circle-2"></div>
+<article class="privacy-policy">
+  <header class="privacy-policy__header">
+    <h1 class="privacy-policy__header-title">
+      Политика обработки персональных данных <br>
+      <span class="title-small">Telegram-бота «Math Tutor»</span>
+    </h1>
+    <p class="privacy-policy__date">
+      Дата последнего обновления:
+      <time datetime="2026-04-06">6 апреля 2026 г.</time>
+    </p>
+  </header>
+  <main class="privacy-policy__content">
+    <section class="privacy-policy__section container">
+      <h2 class="privacy-policy__section-title">1. Общие положения</h2>
+      <ol class="privacy-policy__list">
+        <li class="privacy-policy__item list-item">
+          Настоящая Политика обработки персональных данных (далее — «Политика»)
+          разработана в соответствии с требованиями Федерального закона от <time datetime="2006.07.27">27.07.2006</time>
+          № 152-ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению их безопасности.
+        </li>
+        <li class="privacy-policy__item list-item">
+          <span class="privacy-policy__item-subtitle">
+            Операторами персональных данных являются:
+          </span>
 
-  <article class="privacy-policy">
-    <header class="privacy-policy__header container">
-      <h1 class="privacy-policy__header-title">
-        Политика обработки персональных данных<br />
-        <span class="title-small">Telegram-бота «Math Tutor»</span>
-      </h1>
-      <p class="privacy-policy__date">
-        Дата последнего обновления: 6 апреля 2026 г.
+          <ul class="privacy-policy__sublist">
+            <li class="privacy-policy__sublist-item">
+              infinity_ (Telegram:<a class="privacy-policy__link" href="https://t.me/infinityriver">@infinityriver</a>);
+            </li>
+            <li class="privacy-policy__sublist-item">
+              iislaam) (Telegram: <a class="privacy-policy__link" href="https://t.me/iisssslaam">@iisssslaam</a>)
+              (далее совместно — «Операторы»).
+            </li>
+          </ul>
+        </li>
+        <li class="privacy-policy__item list-item">
+          Настоящая Политика применяется ко всей информации, которую Операторы могут получить
+          о пользователях при использовании Telegram-бота «Math Tutor» (далее — «Бот»).
+        </li>
+        <li class="privacy-policy__item list-item">
+          Использование Бота означает безоговорочное согласие пользователя с настоящей Политикой и
+          условиями обработки его персональных данных. В случае несогласия пользователь обязан прекратить использование Бота.
+        </li>
+      </ol>
+    </section>
+    <section class="privacy-policy__section container">
+      <h2 class="privacy-policy__section-title">2. Основные понятия</h2>
+      <ol class="privacy-policy__list">
+        <li class="privacy-policy__item">
+          Персональные данные — любая информация, относящаяся прямо или косвенно к определённому или определяемому
+        </li>
+        <li class="privacy-policy__item">
+          Обработка персональных данных — любое действие (операция) или совокупность действий
+          с персональными данными, включая сбор, запись, систематизацию, накопление, хранение, уточнение,
+          использование, передачу, обезличивание, блокирование, удаление и уничтожение.
+        </li>
+        <li class="privacy-policy__item">
+          Автоматизированная обработка — обработка персональных данных с использованием средств вычислительной техники.
+        </li>
+      </ol>
+    </section>
+    <section class="privacy-policy__section container">
+      <h2 class="privacy-policy__section-title">
+        3. Состав обрабатываемых персональных данных
+      </h2>
+      <ol class="privacy-policy__list">
+        <li class="privacy-policy__item">
+          <span class="privacy-policy__item-subtitle">
+            Операторы обрабатывают следующие персональные данные пользователя:
+          </span>
+
+          <ul class="privacy-policy__sublist">
+            <li class="privacy-policy__sublist-item">имя;</li>
+            <li class="privacy-policy__sublist-item">фамилия;</li>
+            <li class="privacy-policy__sublist-item">наименование института;</li>
+            <li class="privacy-policy__sublist-item">номер учебной группы;</li>
+            <li class="privacy-policy__sublist-item">логин от учетной записи на сайте института;</li>
+            <li class="privacy-policy__sublist-item">хэш пароля от учетной записи;</li>
+            <li class="privacy-policy__sublist-item">Telegram ID пользователя.</li>
+          </ul>
+        </li>
+        <li class="privacy-policy__item">
+          Операторы не осуществляют обработку специальных категорий персональных данных.
+        </li>
+      </ol>
+    </section>
+    <section class="privacy-policy__section container">
+      <h2 class="privacy-policy__section-title">4. Цели обработки персональных данных</h2>
+      <ol class="privacy-policy__list">
+        <li class="privacy-policy__item">
+          <span class="privacy-policy__item-subtitle">
+            Персональные данные обрабатываются в следующих целях:
+          </span>
+
+          <ul class="privacy-policy__sublist">
+            <li class="privacy-policy__sublist-item">идентификация пользователя;</li>
+            <li class="privacy-policy__sublist-item">регистрация и предоставление доступа к функционалу Бота;</li>
+            <li class="privacy-policy__sublist-item">получение и отображение учебной информации (включая расписание);</li>
+            <li class="privacy-policy__sublist-item">обеспечение взаимодействия с информационными системами института;</li>
+            <li class="privacy-policy__sublist-item">обеспечение корректной работы Бота.</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+    <section class="privacy-policy__section container">
+      <h2 class="privacy-policy__section-title">5. Правовые основания обработки персональных данных</h2>
+      <ol class="privacy-policy__list">
+        <li class="privacy-policy__item">
+         Обработка персональных данных осуществляется на основании добровольного, конкретного, информированного и сознательного согласия пользователя.
+        </li>
+      </ol>
+    </section>
+    <section class="privacy-policy__section container">
+      <h2 class="privacy-policy__section-title">6.	Порядок и условия обработки персональных данных</h2>
+      <ol class="privacy-policy__list">
+        <li class="privacy-policy__item">
+          Обработка персональных данных осуществляется с использованием средств автоматизации.
+        </li>
+        <li class="privacy-policy__item">
+          Персональные данные пользователей хранятся на сервере, расположенном на территории Российской Федерации.
+        </li>
+        <li class="privacy-policy__item">
+          Операторы принимают необходимые правовые, организационные и технические меры для
+          защиты персональных данных от неправомерного доступа, уничтожения, изменения, блокирования, копирования, распространения,
+          а также от иных неправомерных действий.
+        </li>
+        <li class="privacy-policy__item">
+          Персональные данные используются исключительно в целях, указанных в настоящей Политике.
+        </li>
+        <li class="privacy-policy__item">
+          <span class="privacy-policy__item-subtitle">
+            Операторы вправе передавать персональные данные:
+          </span>
+
+          <ul class="privacy-policy__sublist">
+            <li class="privacy-policy__sublist-item">сервисам Telegram в рамках функционирования Бота;</li>
+            <li class="privacy-policy__sublist-item">информационным системам института при необходимости авторизации пользователя;</li>
+            <li class="privacy-policy__sublist-item">третьим лицам в случаях, предусмотренных законодательством Российской Федерации.</li>
+          </ul>
+        </li>
+        <li class="privacy-policy__item">
+          Пароль пользователя не хранится в открытом виде. Операторы осуществляют хранение исключительно хэшированного значения пароля.
+        </li>
+        <li class="privacy-policy__item">
+          Операторы не несут ответственности за обработку персональных данных сторонними информационными системами, включая системы института и сторонние сервисы.
+        </li>
+      </ol>
+    </section>
+    <section class="privacy-policy__section container">
+      <h2 class="privacy-policy__section-title">7.	Сроки хранения персональных данных</h2>
+      <ol class="privacy-policy__list">
+        <li class="privacy-policy__item">
+          Персональные данные обрабатываются и хранятся до момента удаления
+          пользователем своих данных через интерфейс Бота либо до отзыва согласия на обработку персональных данных.
+        </li>
+      </ol>
+    </section>
+    <section class="privacy-policy__section container">
+      <h2 class="privacy-policy__section-title">8.	Права пользователя</h2>
+      <ol class="privacy-policy__list">
+        <li class="privacy-policy__item">
+          <span class="privacy-policy__item-subtitle">
+            Пользователь имеет право:
+          </span>
+
+          <ul class="privacy-policy__sublist">
+            <li class="privacy-policy__sublist-item">получать информацию, касающуюся обработки его персональных данных;</li>
+            <li class="privacy-policy__sublist-item">требовать уточнения, блокирования или уничтожения персональных данных;</li>
+            <li class="privacy-policy__sublist-item">отозвать согласие на обработку персональных данных;</li>
+            <li class="privacy-policy__sublist-item">осуществлять иные права, предусмотренные законодательством Российской Федерации.</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+    <section class="privacy-policy__section container">
+      <h2 class="privacy-policy__section-title">9.	Отзыв согласия на обработку персональных данных</h2>
+      <ol class="privacy-policy__list">
+        <li class="privacy-policy__item">
+          Пользователь вправе в любой момент отозвать своё согласие на обработку
+          персональных данных путём обращения к Операторам.
+        </li>
+        <li class="privacy-policy__item">
+          В случае отзыва согласия Операторы вправе продолжить обработку персональных данных
+          без согласия пользователя при наличии оснований, предусмотренных законодательством Российской Федерации.
+        </li>
+      </ol>
+    </section>
+    <section class="privacy-policy__section container">
+      <h2 class="privacy-policy__section-title">10.	Ответственность и ограничения</h2>
+      <ol class="privacy-policy__list">
+        <li class="privacy-policy__item">
+          Пользователь самостоятельно принимает решение о предоставлении своих
+          персональных данных и несёт ответственность за их достоверность.
+        </li>
+        <li class="privacy-policy__item">
+          Пользователь осознаёт и принимает риски, связанные с передачей данных
+          для авторизации в сторонних системах.
+        </li>
+      </ol>
+    </section>
+    <section class="privacy-policy__section container">
+      <h2 class="privacy-policy__section-title">11.	Заключительные положения</h2>
+      <ol class="privacy-policy__list">
+        <li class="privacy-policy__item">
+          Операторы вправе вносить изменения в настоящую Политику без согласия пользователя.
+        </li>
+        <li class="privacy-policy__item">
+          Актуальная версия Политики доступна пользователю в интерфейсе Бота.
+        </li>
+      </ol>
+    </section>
+    <section class="privacy-policy__section container">
+      <h2 class="privacy-policy__section-title">12.	Контактная информация</h2>
+      <p class="privacy-policy__text">
+        По всем вопросам, связанным с обработкой
+        персональных данных, пользователь может обратиться к Операторам:
       </p>
-    </header>
 
-    <main class="privacy-policy__content">
-      <section class="privacy-policy__section container">
-        <h2 class="privacy-policy__section-title">1. Общие положения</h2>
-        <p>Единый HTML-файл с встроенными стилями создан на основе ваших index.html, normalize.css и styles.css.</p>
-      </section>
-    </main>
-  </article>
+      <ul class="privacy-policy__sublist">
+        <li class="privacy-policy__sublist-item">infinity_ — <a class="privacy-policy__link" href="https://t.me/infinityriver">@infinityriver</a></li>
+        <li class="privacy-policy__sublist-item">iislaam) — <a class="privacy-policy__link" href="https://t.me/iisssslaam">@iisssslaam</a></li>
+      </ul>
+    </section>
+  </main>
+</article>
 </body>
 </html>
